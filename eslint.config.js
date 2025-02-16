@@ -2,7 +2,7 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
-import pluginPrettier from "eslint-plugin-prettier"
+import pluginPrettier from "eslint-plugin-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -13,8 +13,8 @@ export default [
   {
     ...pluginReact.configs.flat.recommended,
     rules: {
-      "react/jsx-uses-react": "off", // Desativa a regra que exige a importação do React
-      "react/react-in-jsx-scope": "off", // Desativa a regra que exige o React no escopo
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
     },
   },
   {
@@ -22,10 +22,17 @@ export default [
       prettier: pluginPrettier,
     },
     rules: {
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
     },
   },
   {
-    extends: ["plugin:prettier/recommended"]
+    rules: {
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "auto",
+        },
+      ],
+    },
   },
 ];
